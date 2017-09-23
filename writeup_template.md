@@ -43,7 +43,7 @@ Here is an example of how to include an image in your writeup.
 
 Table 1 Relative Position of Joint i-1 to i
 
-Joint | x | y |z | roll, pitch, yaw
+Joint | X | Y |Z | roll, pitch, yaw
 --- | --- | --- | --- | ---
 1 | 0 | 0 | 0.33 | 0
 2 | 0.35 | 0 | 0.42 | 0
