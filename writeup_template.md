@@ -41,19 +41,7 @@ Run roslaunch kuka_arm forward_kinematics.launchere:
 
 ![alt text][image4]
 
-Table 1 Relative Position of Joint i-1 to i
-
-Joint | X | Y |Z | roll, pitch, yaw
---- | --- | --- | --- | ---
-1 | 0 | 0 | 0.33 | 0
-2 | 0.35 | 0 | 0.42 | 0
-3 | 0 | 0 | 1.25 | 0
-4 | 0.96 | 0 | -0.54 | 0
-5 | 0.54 | 0 | 0 | 0
-6 | 0.193 | 0 | 0 | 0
-gripper | 0.11 | 0 | 0 | 0
-
-Table 2 Modified DH Parameters
+Table Modified DH Parameters
 
 Joint | alpha(i-1) | a(i-1) | d(i) | theta(i)
 --- | --- | --- | --- | ---
