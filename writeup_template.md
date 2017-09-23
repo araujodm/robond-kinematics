@@ -29,13 +29,12 @@
 ### Writeup / README
 
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  
-
 The writeup / README includes a statement and supporting figures / images that explain how each rubric item was addressed, and specifically where in the code each step was handled.
 
 ### Kinematic Analysis
 #### 1. Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.
 
-Here is an example of how to include an image in your writeup.
+Run roslaunch kuka_arm forward_kinematics.launchere:
 
 ![alt text][image1]
 
@@ -54,9 +53,9 @@ gripper | 0.11 | 0 | 0 | 0
 
 Table 2 Modified DH Parameters
 
-Joint | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
+Joint | alpha(i-1) | a(i-1) | d(i) | theta(i)
 --- | --- | --- | --- | ---
-1 | 0 | 0 | 0.75 | qi
+1 | 0 | 0 | 0.75 | q1
 2 | - pi/2 | 0.35 | 0 | -pi/2 + q2
 3 | 0 | 1.25 | 0 | q3
 4 | - pi/2 | -0.054 | 0 | q4
