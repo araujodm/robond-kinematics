@@ -41,6 +41,7 @@ Here is an example of how to include an image in your writeup.
 #### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
 
 Table 1 Relative Position of Joint i-1 to i
+
 Joint | x | y |z | roll, pitch, yaw
 --- | --- | --- | --- | ---
 1 | 0 | 0 | 0.33 | 0
@@ -52,6 +53,7 @@ Joint | x | y |z | roll, pitch, yaw
 gripper | 0.11 | 0 | 0 | 0
 
 Table 2 Modified DH Parameters
+
 Joint | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
 --- | --- | --- | --- | ---
 1 | 0 | 0 | 0.75 | qi
