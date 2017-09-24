@@ -19,13 +19,12 @@
 [//]: # (Image References)
 
 [image1]: ./misc_images/misc4.PNG
-[image2]: ./misc_images/misc3.png
+ [image2]: ./misc_images/misc3.png
 
 [image3]: ./misc_images/misc5.PNG
 [image4]: ./misc_images/misc7.PNG
 [image5]: ./misc_images/misc6.PNG
-## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points
-### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 
 ---
@@ -58,7 +57,19 @@ gripper | 0 | 0 | 0.303 | q7:0
 ![alt text][image5]
 
 #### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
- 
+
+```sh
+Modified DH parameters:
+        s = {alpha0:        0, a0:      0, d1:  0.75, q1: q1,
+             alpha1: rad(-90), a1:   0.35, d2:     0, q2: q2-rad(90),
+             alpha2:        0, a2:   1.25, d3:     0, q3: q3,
+             alpha3: rad(-90), a3: -0.054, d4:  1.50, q4: q4,
+             alpha4:  rad(90), a4:      0, d5:     0, q5: q5,
+             alpha5: rad(-90), a5:      0, d6:     0, q6: q6,
+             alpha6:        0, a6:      0, d7: 0.303, q7: 0
+        }
+```
+
 ```sh
 trans_matrix(alpha, a, d, q):
     T = Matrix([[            cos(q),           -sin(q),           0,             a],
