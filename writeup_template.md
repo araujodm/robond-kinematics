@@ -164,7 +164,6 @@ R_EE, px, py, pz, roll, pitch, yaw:
 
 ```sh
 r, p, y = symbols('r p y')
-
             R_x = rot_x(r)
             R_y = rot_y(p)
             R_z = rot_z(y)
