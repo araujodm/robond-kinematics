@@ -82,8 +82,7 @@ alpha6:        0, a6:      0, d7: 0.303, q7: 0
         }
 ```
 
-```sh
-trans_matrix(alpha, a, d, q):
+```shtrans_matrix(alpha, a, d, q):
     T = Matrix([[            cos(q),           -sin(q),           0,             a],
                 [ sin(q)*cos(alpha), cos(q)*cos(alpha), -sin(alpha), -sin(alpha)*d],
                 [ sin(q)*sin(alpha), cos(q)*sin(alpha),  cos(alpha),  cos(alpha)*d],
@@ -104,7 +103,6 @@ individual transformation matrices:
 ```
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
-
 The location of the wrist center (WC) and end effector (EE) relative to the base frame "0" is given by, 0rWC/0 and 0rEE/0 , respectively. 
 The location of the EE relative to the WC is given by, 0rEE/WC .
 
@@ -115,11 +113,10 @@ Once the first three joint variables are known, we calculate 03R via application
 ![alt text][image2]
 
 ### Project Implementation
-
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
 
 
-Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
+I talk about the code sa follows. My code guides the robot to successfully complete 9/10 pick and place cycles.  
 
 ```sh
 rot_x(q):
@@ -138,7 +135,25 @@ rot_z(q):
                   [      0,        0,       1]])
 ```
 
-
+```sh
+(R_EE, px, py, pz, roll, pitch, yaw):
+    Rot_err = rot_z(rad(180)) * rot_y(rad(-90))
+    R_EE = R_EE * Rot_err
+    R_EE = R_EE.subs({'r': roll, 'p': pitch, 'y': yaw})
+    G = Matrix([[px], [py], [pz]])
+    WC = G - (0.303) * R_EE[:, 2]
+    theta1 = atan2(WC[1], WC[0])
+    a = 1.501 # Found by using "measure" tool in RViz.
+    b = sqrt(pow((sqrt(WC[0] * WC[0] + WC[1] * WC[1]) - 0.35), 2) + \
+        pow((WC[2] - 0.75), 2))
+    c = 1.25 # Length of joint 1 to 2.
+    alpha = acos((b*b + c*c - a*a) / (2*b*c))
+    beta = acos((a*a + c*c - b*b) / (2*a*c))
+    delta = atan2(WC[2] - 0.75, sqrt(WC[0]*WC[0] + WC[1]*WC[1]) - 0.35)
+    theta2 = pi/2 - alpha - delta
+    epsilon = 0.036 
+    theta3 = pi/2 - (beta + epsilon)
+```
 
 My code guides the robot to successfully complete 9/10 pick and place cycles.
 
