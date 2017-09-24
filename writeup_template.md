@@ -38,23 +38,27 @@ The writeup / README includes a statement and supporting figures / images that e
 ### Kinematic Analysi
 #### 1. Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.
 
-Run roslaunch kuka_arm forward_kinematics.launchere:
 
+Run roslaunch kuka_arm forward_kinematics.launchere:
 ![alt text][image1]
 
 ![alt text][image4]
 
 Modified DH Parameters:
 
+
 Joint | alpha(i-1) | a(i-1) | d(i) | theta(i)
+
 --- | --- | --- | --- | ---
 1 | 0 | 0 | 0.75 | q1
+
 2 | - pi/2 | 0.35 | 0 | -pi/2 + q2
 3 | 0 | 1.25 | 0 | q3
 4 | - pi/2 | -0.054 | 0 | q4
 5 | pi/2 | 0 | 1.5 | q5
 6 | - pi/2 | 0 | 0 | q6
 gripper | 0 | 0 | 0.303 | q7:0
+
 
 alpha(i-1): twist angle, angle between axis Z(i-1) and Z(i) measured about axis X(i-1)
 
@@ -82,7 +86,8 @@ alpha6:        0, a6:      0, d7: 0.303, q7: 0
         }
 ```
 
-```shtrans_matrix(alpha, a, d, q):
+```sh
+trans_matrix(alpha, a, d, q):
     T = Matrix([[            cos(q),           -sin(q),           0,             a],
                 [ sin(q)*cos(alpha), cos(q)*cos(alpha), -sin(alpha), -sin(alpha)*d],
                 [ sin(q)*sin(alpha), cos(q)*sin(alpha),  cos(alpha),  cos(alpha)*d],
@@ -155,7 +160,29 @@ rot_z(q):
     theta3 = pi/2 - (beta + epsilon)
 ```
 
-My code guides the robot to successfully complete 9/10 pick and place cycles.
+```sh
+r, p, y = symbols('r p y')
+
+            R_x = rot_x(r)
+            R_y = rot_y(p)
+            R_z = rot_z(y)
+
+            R_EE = R_z * R_y * R_x
+            R_EE, WC, theta1, theta2, theta3 = calculate_123(R_EE, px, py, pz, roll, pitch, yaw)
+
+            R0_3 = T0_1[0:3,0:3] * T1_2[0:3,0:3] * T2_3[0:3,0:3]
+            R0_3 = R0_3.evalf(subs={q1:theta1, q2:theta2, q3:theta3})
+            
+            R3_6 = R0_3.inv("LU") * R_EE
+
+            theta6 = atan2(-R3_6[1,1], R3_6[1,0])# +0.45370228
+            sq5 = -R3_6[1,1]/sin(theta6)
+            cq5 = R3_6[1,2]
+            theta5 = atan2(sq5, cq5)
+            sq4 = R3_6[2,2]/sin(theta5)
+            cq4 = -R3_6[0,2]/sin(theta5)
+            theta4 = atan2(sq4, cq4)
+```
 
 ![alt text][image3]
 
