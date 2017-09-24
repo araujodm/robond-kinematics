@@ -56,8 +56,7 @@ Joint | alpha(i-1) | a(i-1) | d(i) | theta(i)
 5 | pi/2 | 0 | 1.5 | q5
 6 | - pi/2 | 0 | 0 | q6
 gripper | 0 | 0 | 0.303 | q7:0
-
-
+ 
 alpha(i-1): twist angle, angle between axis Z(i-1) and Z(i) measured about axis X(i-1)
 
 a(i-1): link length, distance from axis Z(i-1) to Z(i) measured along axis X(i-1)
@@ -67,7 +66,6 @@ d(i): link offset, distance from axis X(i-1) to X(i) measured along axis Z(i)
 theta(i): joint angle, angle between axis X(i-1) and X(i) measured about axis Z(i)
  
 ![alt text][image5]
-
 #### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
 
 
@@ -95,8 +93,7 @@ trans_matrix(alpha, a, d, q):
 individual transformation matrices:
         T0_1 = trans_matrix(alpha0, a0, d1, q1).subs(s)
         T1_2 = trans_matrix(alpha1, a1, d2, q2).subs(s)
-
-T2_3 = trans_matrix(alpha2, a2, d3, q3).subs(s)
+        T2_3 = trans_matrix(alpha2, a2, d3, q3).subs(s)
         T3_4 = trans_matrix(alpha3, a3, d4, q4).subs(s)
         T4_5 = trans_matrix(alpha4, a4, d5, q5).subs(s)
         T5_6 = trans_matrix(alpha5, a5, d6, q6).subs(s)
