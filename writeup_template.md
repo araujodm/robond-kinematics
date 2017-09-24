@@ -10,6 +10,7 @@
 1. Set up your ROS Workspace.
 2. Download or clone the [project repository](https://github.com/udacity/RoboND-Kinematics-Project) into the ***src*** directory of your ROS Workspace.  
 3. Experiment with the forward_kinematics environment and get familiar with the robot.
+
 4. Launch in [demo mode](https://classroom.udacity.com/nanodegrees/nd209/parts/7b2fd2d7-e181-401e-977a-6158c77bf816/modules/8855de3f-2897-46c3-a805-628b5ecf045b/lessons/91d017b1-4493-4522-ad52-04a74a01094c/concepts/ae64bb91-e8c4-44c9-adbe-798e8f688193).
 
 5. Perform Kinematic Analysis for the robot following the [project rubric](https://review.udacity.com/#!/rubrics/972/view).
@@ -20,9 +21,9 @@
 
 
 [image1]: ./misc_images/misc4.PNG
-[image2]: ./misc_images/misc8.PNG
-[image3]: ./misc_images/misc5.PNG
+[image2]: ./misc_images/misc8.PNG[image3]: ./misc_images/misc5.PNG
 [image4]: ./misc_images/misc7.PNG
+
 [image5]: ./misc_images/misc6.PNG
 [image6]: ./misc_images/misc9.PNG
 
@@ -39,16 +40,14 @@ The writeup / README includes a statement and supporting figures / images that e
 #### 1. Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.
 
 
-Run roslaunch kuka_arm forward_kinematics.launchere:
-![alt text][image1]
+Run roslaunch kuka_arm forward_kinematics.launchere:![alt text][image1]
+
 
 ![alt text][image4]
 
 Modified DH Parameters:
 
-
 Joint | alpha(i-1) | a(i-1) | d(i) | theta(i)
-
 --- | --- | --- | --- | ---
 1 | 0 | 0 | 0.75 | q1
 2 | - pi/2 | 0.35 | 0 | -pi/2 + q2
@@ -66,21 +65,21 @@ a(i-1): link length, distance from axis Z(i-1) to Z(i) measured along axis X(i-1
 d(i): link offset, distance from axis X(i-1) to X(i) measured along axis Z(i)
 
 theta(i): joint angle, angle between axis X(i-1) and X(i) measured about axis Z(i)
-
+ 
 ![alt text][image5]
 
 #### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
 
 
 ```sh
-Modified DH parameters:
+# Create Modified DH parameters
         s = {alpha0:        0, a0:      0, d1:  0.75, q1: q1,
              alpha1: rad(-90), a1:   0.35, d2:     0, q2: q2-rad(90),
              alpha2:        0, a2:   1.25, d3:     0, q3: q3,
-             alpha3: rad(-90), a3: -0.054, d4:  1.50, q4: q4,             alpha4:  rad(90), a4:      0, d5:     0, q5: q5,
+             alpha3: rad(-90), a3: -0.054, d4:  1.50, q4: q4,
+             alpha4:  rad(90), a4:      0, d5:     0, q5: q5,
              alpha5: rad(-90), a5:      0, d6:     0, q6: q6,
-
-alpha6:        0, a6:      0, d7: 0.303, q7: 0
+             alpha6:        0, a6:      0, d7: 0.303, q7: 0
         }
 ```
 
