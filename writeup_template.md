@@ -72,7 +72,7 @@ theta(i): joint angle, angle between axis X(i-1) and X(i) measured about axis Z(
 
 
 ```sh
-# Create Modified DH parameters
+Modified DH parameters
         s = {alpha0:        0, a0:      0, d1:  0.75, q1: q1,
              alpha1: rad(-90), a1:   0.35, d2:     0, q2: q2-rad(90),
              alpha2:        0, a2:   1.25, d3:     0, q3: q3,
@@ -95,7 +95,8 @@ trans_matrix(alpha, a, d, q):
 individual transformation matrices:
         T0_1 = trans_matrix(alpha0, a0, d1, q1).subs(s)
         T1_2 = trans_matrix(alpha1, a1, d2, q2).subs(s)
-        T2_3 = trans_matrix(alpha2, a2, d3, q3).subs(s)
+
+T2_3 = trans_matrix(alpha2, a2, d3, q3).subs(s)
         T3_4 = trans_matrix(alpha3, a3, d4, q4).subs(s)
         T4_5 = trans_matrix(alpha4, a4, d5, q5).subs(s)
         T5_6 = trans_matrix(alpha5, a5, d6, q6).subs(s)
@@ -118,6 +119,7 @@ Once the first three joint variables are known, we calculate 03R via application
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
 
 
+
 I talk about the code as follows. My code guides the robot to successfully complete 9/10 pick and place cycles.  
 
 ```sh
@@ -138,13 +140,15 @@ rot_z(q):
 ```
 
 ```sh
-(R_EE, px, py, pz, roll, pitch, yaw):
+R_EE, px, py, pz, roll, pitch, yaw:
     Rot_err = rot_z(rad(180)) * rot_y(rad(-90))
     R_EE = R_EE * Rot_err
     R_EE = R_EE.subs({'r': roll, 'p': pitch, 'y': yaw})
+
     G = Matrix([[px], [py], [pz]])
     WC = G - (0.303) * R_EE[:, 2]
     theta1 = atan2(WC[1], WC[0])
+
     a = 1.501 # Found by using "measure" tool in RViz.
     b = sqrt(pow((sqrt(WC[0] * WC[0] + WC[1] * WC[1]) - 0.35), 2) + \
         pow((WC[2] - 0.75), 2))
@@ -153,6 +157,7 @@ rot_z(q):
     beta = acos((a*a + c*c - b*b) / (2*a*c))
     delta = atan2(WC[2] - 0.75, sqrt(WC[0]*WC[0] + WC[1]*WC[1]) - 0.35)
     theta2 = pi/2 - alpha - delta
+
     epsilon = 0.036 
     theta3 = pi/2 - (beta + epsilon)
 ```
