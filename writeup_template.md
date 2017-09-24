@@ -20,10 +20,11 @@
 
 
 [image1]: ./misc_images/misc4.PNG
-[image2]: ./misc_images/misc3.png
+[image2]: ./misc_images/misc8.png
 [image3]: ./misc_images/misc5.PNG
 [image4]: ./misc_images/misc7.PNG
 [image5]: ./misc_images/misc6.PNG
+[image6]: ./misc_images/misc9.PNG
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
@@ -105,6 +106,8 @@ individual transformation matrices:
 And here's where you can draw out and show your math for the derivation of your theta angles. 
 
 ![alt text][image2]
+
+![alt text][image6]
 
 ### Project Implementation
 
