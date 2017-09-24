@@ -106,11 +106,11 @@ individual transformation matrices:
 The location of the wrist center (WC) and end effector (EE) relative to the base frame "0" is given by, 0rWC/0 and 0rEE/0 , respectively. 
 The location of the EE relative to the WC is given by, 0rEE/WC .
 
-![alt text][image2]
-
-
+Once the first three joint variables are known, we calculate 03R via application of homogeneous transforms up to the WC.
 
 ![alt text][image6]
+
+![alt text][image2]
 
 ### Project Implementation
 
