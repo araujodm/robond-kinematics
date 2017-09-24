@@ -26,8 +26,8 @@
 [image5]: ./misc_images/misc6.PNG
 [image6]: ./misc_images/misc9.PNG
 
-## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
-
+## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points 
+### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.
 
 ---
 ### Writeup / README
@@ -51,7 +51,6 @@ Joint | alpha(i-1) | a(i-1) | d(i) | theta(i)
 
 --- | --- | --- | --- | ---
 1 | 0 | 0 | 0.75 | q1
-
 2 | - pi/2 | 0.35 | 0 | -pi/2 + q2
 3 | 0 | 1.25 | 0 | q3
 4 | - pi/2 | -0.054 | 0 | q4
@@ -78,8 +77,7 @@ Modified DH parameters:
         s = {alpha0:        0, a0:      0, d1:  0.75, q1: q1,
              alpha1: rad(-90), a1:   0.35, d2:     0, q2: q2-rad(90),
              alpha2:        0, a2:   1.25, d3:     0, q3: q3,
-             alpha3: rad(-90), a3: -0.054, d4:  1.50, q4: q4,
-             alpha4:  rad(90), a4:      0, d5:     0, q5: q5,
+             alpha3: rad(-90), a3: -0.054, d4:  1.50, q4: q4,             alpha4:  rad(90), a4:      0, d5:     0, q5: q5,
              alpha5: rad(-90), a5:      0, d6:     0, q6: q6,
 
 alpha6:        0, a6:      0, d7: 0.303, q7: 0
@@ -121,7 +119,7 @@ Once the first three joint variables are known, we calculate 03R via application
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
 
 
-I talk about the code sa follows. My code guides the robot to successfully complete 9/10 pick and place cycles.  
+I talk about the code as follows. My code guides the robot to successfully complete 9/10 pick and place cycles.  
 
 ```sh
 rot_x(q):
