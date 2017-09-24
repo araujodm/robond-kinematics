@@ -21,7 +21,6 @@
 [image1]: ./misc_images/misc4.PNG
 [image2]: ./misc_images/misc3.png
 
-
 [image3]: ./misc_images/misc5.PNG
 [image4]: ./misc_images/misc7.PNG
 [image5]: ./misc_images/misc6.PNG
@@ -69,7 +68,7 @@ trans_matrix(alpha, a, d, q):
 ```
 
 ```sh
-# individual transformation matrices
+individual transformation matrices:
         T0_1 = trans_matrix(alpha0, a0, d1, q1).subs(s)
         T1_2 = trans_matrix(alpha1, a1, d2, q2).subs(s)
         T2_3 = trans_matrix(alpha2, a2, d3, q3).subs(s)
@@ -80,8 +79,6 @@ trans_matrix(alpha, a, d, q):
 
         T0_EE = simplify(T0_1 * T1_2 * T2_3 * T3_4 * T4_5 * T5_6 * T6_EE)
 ```
-
-
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
