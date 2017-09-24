@@ -18,12 +18,13 @@
 
 [//]: # (Image References)
 
-[image1]: ./misc_images/misc4.PNG
- [image2]: ./misc_images/misc3.png
 
+[image1]: ./misc_images/misc4.PNG
+[image2]: ./misc_images/misc3.png
 [image3]: ./misc_images/misc5.PNG
 [image4]: ./misc_images/misc7.PNG
 [image5]: ./misc_images/misc6.PNG
+
 ## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 
@@ -42,7 +43,7 @@ Run roslaunch kuka_arm forward_kinematics.launchere:
 
 ![alt text][image4]
 
-Table Modified DH Parameters
+Modified DH Parameters:
 
 Joint | alpha(i-1) | a(i-1) | d(i) | theta(i)
 --- | --- | --- | --- | ---
@@ -53,6 +54,11 @@ Joint | alpha(i-1) | a(i-1) | d(i) | theta(i)
 5 | pi/2 | 0 | 1.5 | q5
 6 | - pi/2 | 0 | 0 | q6
 gripper | 0 | 0 | 0.303 | q7:0
+
+alpha(i-1): twist angle, angle between axis Z(i-1) and Z(i) measured about axis X(i-1)
+a(i-1): link length, distance from axis Z(i-1) to Z(i) measured along axis X(i-1)
+d(i): link offset, distance from axis X(i-1) to X(i) measured along axis Z(i)
+theta(i): joint angle, angle between axis X(i-1) and X(i) measured about axis Z(i)
 
 ![alt text][image5]
 
