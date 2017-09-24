@@ -68,6 +68,7 @@ theta(i): joint angle, angle between axis X(i-1) and X(i) measured about axis Z(
 
 #### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
 
+
 ```sh
 Modified DH parameters:
         s = {alpha0:        0, a0:      0, d1:  0.75, q1: q1,
@@ -76,7 +77,8 @@ Modified DH parameters:
              alpha3: rad(-90), a3: -0.054, d4:  1.50, q4: q4,
              alpha4:  rad(90), a4:      0, d5:     0, q5: q5,
              alpha5: rad(-90), a5:      0, d6:     0, q6: q6,
-             alpha6:        0, a6:      0, d7: 0.303, q7: 0
+
+alpha6:        0, a6:      0, d7: 0.303, q7: 0
         }
 ```
 
@@ -119,8 +121,27 @@ Once the first three joint variables are known, we calculate 03R via application
 
 Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
 
+```sh
+rot_x(q):
+    R_x = Matrix([[ 1,              0,        0],
+                  [ 0,         cos(q),  -sin(q)],
+                  [ 0,         sin(q),  cos(q)]])
+    
+rot_y(q):              
+    R_y = Matrix([[ cos(q),        0,  sin(q)],
+                  [      0,        1,       0],
+                  [-sin(q),        0, cos(q)]])
 
-And just for fun, another example image: My code guides the robot to successfully complete 9/10 pick and place cycles.
+rot_z(q):    
+    R_z = Matrix([[ cos(q),  -sin(q),       0],
+                  [ sin(q),   cos(q),       0],
+                  [      0,        0,       1]])
+```
+
+
+
+My code guides the robot to successfully complete 9/10 pick and place cycles.
+
 ![alt text][image3]
 
 
