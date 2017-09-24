@@ -56,8 +56,11 @@ Joint | alpha(i-1) | a(i-1) | d(i) | theta(i)
 gripper | 0 | 0 | 0.303 | q7:0
 
 alpha(i-1): twist angle, angle between axis Z(i-1) and Z(i) measured about axis X(i-1)
+
 a(i-1): link length, distance from axis Z(i-1) to Z(i) measured along axis X(i-1)
+
 d(i): link offset, distance from axis X(i-1) to X(i) measured along axis Z(i)
+
 theta(i): joint angle, angle between axis X(i-1) and X(i) measured about axis Z(i)
 
 ![alt text][image5]
