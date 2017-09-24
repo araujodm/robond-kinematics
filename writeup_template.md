@@ -21,9 +21,9 @@
 
 
 [image1]: ./misc_images/misc4.PNG
-[image2]: ./misc_images/misc8.PNG[image3]: ./misc_images/misc5.PNG
+[image2]: ./misc_images/misc8.PNG
+[image3]: ./misc_images/misc5.PNG
 [image4]: ./misc_images/misc7.PNG
-
 [image5]: ./misc_images/misc6.PNG
 [image6]: ./misc_images/misc9.PNG
 
