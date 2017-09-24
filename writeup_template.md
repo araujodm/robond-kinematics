@@ -103,9 +103,12 @@ individual transformation matrices:
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
-And here's where you can draw out and show your math for the derivation of your theta angles. 
+The location of the wrist center (WC) and end effector (EE) relative to the base frame "0" is given by, 0rWC/0 and 0rEE/0 , respectively. 
+The location of the EE relative to the WC is given by, 0rEE/WC .
 
 ![alt text][image2]
+
+
 
 ![alt text][image6]
 
